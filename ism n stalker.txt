@@ -1,0 +1,288 @@
+Here is a clear and complete explanation of where to do and how to do the N-Stalker web application security test, based on your Aim, Description, and Algorithm.
+
+✅ WHERE to use N-Stalker?
+
+N-Stalker is a Windows-based GUI tool.
+So you should run it on:
+
+✔ Windows Laptop / Desktop
+✔ Windows Virtual Machine (VMware / VirtualBox)
+
+To avoid security risk, a VM is preferable.
+
+⚠️ Important
+
+N-Stalker is not available on Linux and cannot run in browser or online.
+You must install it locally.
+
+📥 HOW to Install N-Stalker
+
+Go to official website (if available) or search for
+“N-Stalker Web Application Security Scanner Download”
+
+Download the installer (.exe)
+
+Double-click and install
+
+Launch the application from Start menu
+
+🧪 HOW to Perform the Web Application Scan (Step-by-step)
+
+This is exactly what you should write in your lab manual + what you should do practically.
+
+STEP 1 — Open N-Stalker Application
+
+After installation, open:
+
+N-Stalker Web Application Security Scanner
+
+STEP 2 — Click “New Scan”
+
+From the top menu
+
+Select File → New Scan
+
+A dialog box appears
+
+STEP 3 — Enter URL
+
+In the target field, type:
+
+www.rajalakshmi.org
+
+
+This sets your website for scanning.
+
+STEP 4 — Choose Scan Policy
+
+Select:
+
+Manual Test
+
+
+Then click Next.
+
+This means:
+
+You manually configure the test
+
+You have full control over scanning components
+
+STEP 5 — Click Optimize
+
+The Optimize button:
+
+Chooses best scanning modules
+
+Removes unnecessary checks
+
+Improves performance
+
+Click Next.
+
+STEP 6 — Start Session
+
+Click:
+
+Start Session
+
+
+This will:
+
+Start the session environment
+
+Prepare crawler
+
+Load plugins / modules
+
+STEP 7 — Start Scan
+
+Press:
+
+Start Scan
+
+
+N-Stalker will now do:
+
+HTTP fingerprinting
+
+Crawler testing
+
+Security checks (SQL injection, XSS, etc.)
+
+Server discovery
+
+Fuzzing
+
+Browser-level vulnerability checks
+
+You can see:
+
+Live HTTP requests
+
+Live test progress
+
+Identified vulnerabilities
+
+STEP 8 — Save Scan Results
+
+After scan completes:
+
+File → Save Scan Result
+
+
+You will get a report file (.nsr) which you can export to:
+
+PDF
+
+HTML
+
+XML
+
+📌 Your Lab Output Should Include
+
+Screenshot of New Scan screen
+
+Screenshot of URL entry
+
+Screenshot of Scan Progress
+
+Screenshot of Scan Results
+
+Summary of vulnerabilities found
+
+
+
+yaaraa (analysis of malware )
+
+Here is exactly where and how you perform your YARA malware analysis for SpyEye.
+
+✅ Where to run YARA?
+
+You can run YARA on any of these:
+
+✔ Kali Linux
+
+(best for cybersecurity labs)
+
+✔ Ubuntu / Parrot OS
+
+(install YARA manually)
+
+✔ Windows
+
+(using PowerShell + pre-compiled YARA)
+
+✔ Online YARA Playground
+
+(for quick testing, no installation)
+👉 https://yara-online.herokuapp.com
+
+👉 https://virustotal.github.io/yara/
+
+✔ Inside a Virtual Machine
+
+(safest for malware)
+
+❗ IMPORTANT
+
+You must NOT run real malware on your main laptop.
+Use a VM or cloud environment.
+
+🧪 HOW TO DO IT — Step-by-Step Guide
+
+Below is exact practical instructions to run your given YARA script.
+
+🔰 STEP 1 — Install YARA
+On Kali Linux / Ubuntu
+sudo apt update
+sudo apt install yara
+
+On Windows
+
+Download YARA binary:
+👉 https://github.com/VirusTotal/yara/releases
+
+Extract → open PowerShell → run yara.exe.
+
+🔰 STEP 2 — Create your YARA rule
+
+Create a file:
+
+spyeye.yara
+
+
+Paste the corrected script:
+
+rule spyeye : banker
+{
+    meta:
+        author = "Ben"
+        description = "SpyEye malware detection"
+        date = "2022-05-25"
+        version = "1.0"
+        filetype = "memory"
+
+    strings:
+        $g = "bot_version"
+        $h = "bot_guid"
+
+    condition:
+        any of ($g, $h) and filesize > 50000
+}
+
+
+Save the file.
+
+🔰 STEP 3 — Get a suspicious malware file
+
+For example:
+
+malware.exe
+
+
+(Put it in the same folder as your YARA script.)
+
+🔰 STEP 4 — Run YARA rule
+
+Open terminal:
+
+yara spyeye.yara malware.exe
+
+🔰 STEP 5 — Interpret the Output
+Case 1 → SpyEye detected
+spyeye malware.exe
+
+Case 2 → No output (safe file)
+<no output>
+
+
+That means:
+
+File does NOT contain the SpyEye signatures
+
+Strings were not found
+
+Filesize condition not matched
+
+📌 Your Lab Output Should Look Like This
+[root@localhost Downloads]# ll malware.exe
+-rw-r--r--. 1 root root 148480 May 26 11:17 malware.exe
+
+[root@localhost Downloads]# yara spyeye.yara malware.exe
+spyeye malware.exe
+
+🧑‍💻 Want me to generate?
+
+I can provide:
+
+✔ A cleaned YARA script
+✔ A complete project report (AIM, Algorithm, Output)
+✔ A Linux terminal output simulation
+✔ A PDF of your experiment file
+
+Just say:
+
+👉 "Give full project report"
+or
+👉 "Give output screenshots"
