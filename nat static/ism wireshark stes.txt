@@ -1,0 +1,101 @@
+Here is exactly where and how to find PART 7: Inspecting an HTTP GET inside Wireshark.
+
+✅ Where is the HTTP GET message in Wireshark?
+
+After applying your HTTP display filter, you will see a list of HTTP packets.
+
+To inspect an HTTP GET:
+
+✔ Step-by-Step: Finding the HTTP GET Packet
+1. In the Filter bar, enter:
+http && (ip.src == 169.1.19.87 || ip.dst == 169.1.19.87)
+
+
+Press Enter.
+
+Wireshark now shows only HTTP packets exchanged with your computer.
+
+✔ 2. Look at the Packet List (top window)
+
+This is the section where packets appear in rows.
+
+You will see lines like:
+
+No. | Time | Source | Destination | Protocol | Info
+--------------------------------------------------------
+23  | ...  | 169.1.19.87 | 128.2.x.x | HTTP | GET /Lab0/lab0.html
+
+
+🔵 Look for the packet whose Protocol = HTTP and Info contains GET
+Example Info field:
+
+GET /~ini740/Lab0/lab0.html HTTP/1.1
+
+
+This is your HTTP GET request.
+
+✔ 3. Click the HTTP GET Packet
+
+When you click it:
+
+The middle pane (Packet Details Window) shows:
+
+Frame
+
+Ethernet
+
+Internet Protocol (IP)
+
+Transmission Control Protocol (TCP)
+
+Hypertext Transfer Protocol (HTTP)
+
+Expand the HTTP section using the ▼ arrow.
+
+Inside you will see fields like:
+
+Request Method: GET
+
+Request URI: /~ini740/Lab0/lab0.html
+
+Host: www.ece.cmu.edu
+
+User-Agent
+
+Accept
+
+Connection
+
+✔ 4. Minimize the other protocol layers
+
+Click the small triangles to collapse:
+
+Frame
+
+Ethernet
+
+IP
+
+TCP
+
+Expand only HTTP.
+
+So your screen will show only the HTTP request details clearly.
+
+✔ 5. Bottom window (Packet Bytes)
+
+This shows the raw GET request in ASCII + Hex.
+
+Example ASCII view:
+
+GET /~ini740/Lab0/lab0.html HTTP/1.1
+Host: www.ece.cmu.edu
+User-Agent: Mozilla/5.0 ...
+
+🎯 So, where is PART 7?
+
+It is the exact stage where you select the first HTTP GET message from your capture:
+
+👉 Packet List → Find HTTP GET → Click it → Expand HTTP in Packet Details
+
+This is Part 7: Inspecting the HTTP GET message.
