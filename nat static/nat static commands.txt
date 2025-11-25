@@ -1,0 +1,286 @@
+router 0:
+
+Router>enable
+Router#
+Router#configure terminal
+Enter configuration commands, one per line. End with CNTL/Z.
+Router (config) #interface GigabitEthernet0/0
+Router (config-if) #ip address 200.100.50.1 255.255.255.0
+Router (config-if) #ip address 200.100.50.1 255.255.255.0
+Router (config-if) #ip address
+% Incomplete command.
+Router (config-if) #ip address
+% Incomplete command.
+Router (config-if) #
+Router (config-if) #exit
+Router (config) #interface GigabitEthernet0/1
+Router (config-if) #ip address 200.50.10.1 255.255.255.0
+Router (config-if) #ip address 200.50.10.1 255.255.255.0
+Router (config-if) #ip address 200.100.50.1 255.255.255.0
+Router (config-if) #no shutdown
+Router (config-if) #
+%LINK-5-CHANGED: Interface GigabitEthernet0/1, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up
+
+Router (config-if) #
+Router (config-if) #exit
+Router (config) #interface GigabitEthernet0/0
+Router (config-if) #ip address 192.168.20.1 255.255.255.0
+Router (config-if) #ip address 192.168.20.1 255.255.255.0
+Router (config-if) #no shutdown
+Router (config-if) #
+%LINK-5-CHANGED: Interface GigabitEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0, changed state to up
+
+Router (config-if) #
+Router (config-if) #
+Router (config-if) #exit
+Router (config) #interface GigabitEthernet0/0
+Router (config-if) #
+Router (config-if) #exit
+Router (config) #interface GigabitEthernet0/1
+Router (config-if) #ip address 200.100.50.1 255.255.255.252
+Router (config-if) #
+Router (config-if) # ex
+Router (config) #
+Router (config) #
+Router (config) #
+Router (config) #router o
+% Incomplete command.
+Router (config) #router ospf 30
+Router (config-router) #router-id 1.1.1.1
+Router (config-router) #network 192.168.20.0 0.0.0.255 area 0
+Router (config-router) #network 200.100.50.0 0.0.0.3 area 0
+Router (config-router) #exit
+Router (config) #
+Router (config) #
+Router (config) #
+Router (config) #do wr
+Building configuration ...
+[OK]
+Router (config) #
+00:25:19: %OSPF-5-ADJCHG: Process 30, Nbr 2.2.2.2 on GigabitEthernet0/1 from LOADING to
+FULL, Loading Done
+
+Router (config) #end
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+end
+Translating "end" ... domain server (255.255.255.255)
+% Unknown command or computer name, or unable to find computer address
+
+Router#sh ip nat translations
+Router#config t
+Enter configuration commands, one per line. End with CNTL/Z.
+Router (config) #conf t
+%Invalid hex value
+Router (config) #ip nat inside source static 192.168.20.10 200.100.50.1
+Router (config) #ip nat inside
+% Incomplete command.
+Router (config) #interface GigabitEthernet0/0
+Router (config) #ip nat inside
+% Incomplete command.
+Router (config) #interface GigabitEthernet0/0
+Router (config-if) #ip nat inside
+Router (config-if) #ex
+Router (config) #interface GigabitEthernet0/1
+Router (config-if) #ip nat inside
+Router (config-if) #ex
+Router (config) #interface GigabitEthernet0/1
+Router (config-if) #interface GigabitEthernet0/0
+Router (config-if) #ip nat outside
+Router (config-if) #ex
+Router (config) #interface GigabitEthernet0/0
+Router (config-if) #ip nat inside
+Router (config-if) #ex
+Router (config) #interface GigabitEthernet0/1
+Router (config-if) #ip nat ou
+Router (config-if) #ip nat outside
+Router (config-if) #do wr
+Building configuration ...
+[OK]
+Router (config-if) #
+Router (config-if) #
+Router (config-if) #
+Router (config-if) #end
+Router#
+$SYS-5-CONFIG_I: Configured from console by console
+
+Router#show ip nat tr
+Inside global
+200.100.50.1
+
+Router#
+Router#
+Router#show ip nat translations
+Pro Inside global
+200.100.50.1
+
+Router#show ip nat translations
+Inside global
+icmp 200.100.50.1:23
+icmp 200.100.50.1:24
+icmp 200.100.50.1:25
+
+Pro
+
+Outside local
+
+Outside global
+
+Inside local
+192.168.20.10
+
+Inside local
+192.168.20.10
+
+Outside local
+
+Outside global
+
+Pro
+
+Inside local
+192.168.20.10:23
+192.168.20.10:24
+192.168.20.10:25
+
+Outside local
+8.8.8.8:23
+8.8.8.8:24
+8.8.8.8:25
+
+Outside global
+8.8.8.8:23
+8.8.8.8:24
+8.8.8.8:25
+
+
+router 1:
+
+Router>enable
+Router#
+Router#configure terminal
+Enter configuration commands, one per line. End with CNTL/Z.
+Router (config) #interface GigabitEthernet0/0
+Router (config-if) #ip address 200.100.50.2 255.255.255.0
+Router (config-if) #ip address 200.100.50.2 255.255.255.0
+Router (config-if) #no shutdown
+Router (config-if) #
+%LINK-5-CHANGED: Interface GigabitEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0, changed state to up
+
+Router (config-if) #
+Router (config-if) #exit
+Router (config) #interface GigabitEthernet0/1
+Router (config-if) #ip address 8.8.8.1 255.0.0.0
+Router (config-if) #ip address 8.8.8.1 255.0.0.0
+Router (config-if) #no shutdown
+Router (config-if) #
+$LINK-5-CHANGED: Interface GigabitEthernet0/1, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up
+
+Router (config-if) #
+Router (config-if) #exit
+Router (config) #interface GigabitEthernet0/0
+Router (config-if) #
+Router (config-if) #exit
+Router (config) #interface GigabitEthernet0/1
+Router (config-if) #ip address 8.8.8.1 255.255.255.0
+Router (config-if) #
+Router (config-if) #exit
+Router (config) #interface GigabitEthernet0/0
+Router (config-if) #ip address 200.100.50.2 255.255.255.252
+Router (config-if) #
+Router (config-if) #ex
+Router (config) #
+Router (config) #
+Router (config) #
+Router (config) #router ospf 30
+Router (config-router) #router-id 2.2.2.2
+Router (config-router) #
+Router (config-router) #
+Router (config-router) #network 8.8.8.0 0.0.0.255 area 0
+Router (config-router) #network 200.100.50.0 0.0.0.3 area 0
+Router (config-router) #ex
+Router (config) #do wr
+00:25:14: %OSPF-5-ADJCHG: Process 30, Nbr 1.1.1.1 on GigabitEthernet0/0 from LOADING to FULL,
+Loading Done
+
+Router#
+$SYS-5-CONFIG_I: Configured from console by console
+do wr
+
+% Invalid input detected at '^' marker.
+
+Router#conf
+Configuring from terminal, memory, or network [terminal]? y
+?Must be "terminal", "memory" or "network"
+Router#congig
+Translating "congig" ... domain server (255.255.255.255) Enter configuration commands, one per
+line. End with CNTL/Z.
+Router (config) #
+Router (config) #interface GigabitEthernet0/1
+Router (config-if) #
+Router (config-if) #exit
+Router (config) #interface GigabitEthernet0/0
+Router (config-if) #
+% Unknown command or computer name, or unable to find computer address
+
+Router (config-if) #ex
+Router (config) #router ospf
+% Incomplete command.
+Router (config) #router ospf 30
+Router (config-router) #router-id 2.2.2.2
+Router (config-router) #network 8.8.8.0 0.0.0.255 ar
+% Incomplete command.
+Router (config-router) #network 8.8.8.0 0.0.0.255 area 0
+Router (config-router) #network 200.100.50.0 0.0.0.3 area 0
+Router (config-router) #ex
+Router (config) #
+Router (config) #do wr
+
+pc0:
+
+Cisco Packet Tracer PC Command Line 1.0
+C:\>ping 8.8.8.8
+
+Pinging 8.8.8.8 with 32 bytes of data:
+
+Request timed out.
+Reply from 8.8.8.8: bytes=32 time<1ms TTL=126
+Reply from 8.8.8.8: bytes=32 time<1ms TTL=126
+Reply from 8.8.8.8: bytes=32 time=9ms TTL=126
+
+Ping statistics for 8.8.8.8:
+Packets: Sent = 4, Received = 3, Lost = 1 (25% loss),
+Approximate round trip times in milli-seconds:
+Minimum = 0ms, Maximum = 9ms, Average = 3ms
+
+c:\>tracert 8.8.8.8
+
+Tracing route to 8.8.8.8 over a maximum of 30 hops:
+
+192.168.20.1
+200.100.50.2
+8.8.8.8
+
+1
+
+3
+
+Trace complete
+
+C:\>ping 8.8.8.8
+
+Pinging 8.8.8.8 with 32 bytes of data:
+
+Reply from 8.8.8.8: bytes=32 time<1ms TTL=126
+Reply from 8.8.8.8: bytes=32 time<1ms TTL=126
+Reply from 8.8.8.8: bytes=32 time<1ms TTL=126
+Reply from 8.8.8.8: bytes=32 time<1ms TTL=126
+
